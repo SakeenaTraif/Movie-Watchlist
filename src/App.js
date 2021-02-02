@@ -1,11 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
-import SearchBar from "./components/SearchBar";
+import Watchlist from "./components/Watchlist";
+import Watched from "./components/Watched";
+import InputForm from "./components/InputForm";
+import { useState } from "react";
+import movies from "./movies";
 
 function App() {
   return (
     <div>
-      <SearchBar/>
+      <InputForm />
+      <Watchlist />
     </div>
   );
 }
