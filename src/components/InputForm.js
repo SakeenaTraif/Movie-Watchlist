@@ -1,7 +1,7 @@
-import { useState, useSelector } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addMovie } from "../store/actions";
+import { InputFormStyled } from "../styles";
 
 import AddButton from "./buttons/AddButton";
 
@@ -9,15 +9,10 @@ const InputForm = () => {
   const [movie, setMovie] = useState({
     name: "",
   });
-  // const { movieSlug } = useParams();
 
   const dispatch = useDispatch();
 
-  // const foundMovies = useSelector((state) =>
-  //   state.movies.find((movie) => movies.slug === movieSlug)
-  // );
-
-  const handleChnage = (event) => {
+  const handleChange = (event) => {
     setMovie({ ...movie, [event.target.name]: event.target.value });
   };
 
@@ -37,14 +32,13 @@ const InputForm = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <label>
-          Movie:
-          <input
+          <InputFormStyled
             name="name"
             value={movie.name}
             type="text"
             placeholder="Enter the movie name"
-            onChange={handleChnage}
-          ></input>
+            onChange={handleChange}
+          ></InputFormStyled>
           <AddButton type="submit" value="Submit"></AddButton>
         </label>
       </form>

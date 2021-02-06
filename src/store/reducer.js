@@ -19,11 +19,21 @@ const reducer = (state = initialState, action) => {
       const { newMovie } = action.payload;
       newMovie.slug = slugify(newMovie.name, { lower: true });
       newMovie.id = state.movies[state.movies.length - 1].id + 1;
+      newMovie.watch = false;
       return {
         ...state,
         movies: [...state.movies, newMovie],
       };
 
+    case "UPDATE_MOVIE":
+      const { updatedMovie } = action.payload;
+      updatedMovie.watch = !updatedMovie.watch;
+      return {
+        ...state,
+        movies: state.movies.map((movie) =>
+          updatedMovie.id === movie.id ? updatedMovie : movie
+        ),
+      };
     default:
       return state;
   }

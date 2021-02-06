@@ -1,15 +1,26 @@
-import Watchlist from "./components/Watchlist";
+import WatchList from "./components/WatchList";
 import Watched from "./components/Watched";
 import InputForm from "./components/InputForm";
-import { useState } from "react";
+import {
+  GlobalStyle,
+  AppWrapper,
+  WatchListWrapper,
+  UnwatchListWrapper,
+} from "./styles";
 import movies from "./movies";
 
 function App() {
   return (
-    <div>
+    <AppWrapper>
+      <GlobalStyle />
       <InputForm />
-      <Watchlist />
-    </div>
+      <WatchListWrapper>
+        {movies.length > 0 ? <WatchList /> : "No Movies To Show"}
+      </WatchListWrapper>
+      <UnwatchListWrapper>
+        <Watched />
+      </UnwatchListWrapper>
+    </AppWrapper>
   );
 }
 

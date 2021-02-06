@@ -1,7 +1,15 @@
+import { useDispatch } from "react-redux";
+import { updatedMovie } from "../../store/actions";
 import { WatchedButtonStyled } from "../../styles";
 
-const WatchedButton = () => {
-  return <WatchedButtonStyled>Watched</WatchedButtonStyled>;
+const WatchedButton = (props) => {
+  const dispatch = useDispatch();
+
+  return (
+    <WatchedButtonStyled onClick={() => dispatch(updatedMovie(props.movie))}>
+      Watched
+    </WatchedButtonStyled>
+  );
 };
 
 export default WatchedButton;
